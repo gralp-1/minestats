@@ -1,31 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "minestats",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "MineStats",
+  "description": "This is a mod which adds a command which links you to a stats page for your minecraft server.",
   "authors": [
-    "Me!"
+    "gralp"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/gralp-1/minestats"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/minestats/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "srmworks.minestats.MineStats"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
-
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
@@ -33,6 +29,5 @@
     "java": ">=17"
   },
   "suggests": {
-    "another-mod": "*"
   }
 }
