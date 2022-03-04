@@ -2,7 +2,7 @@
 
 | Platform       | Support          |
 |----------------|------------------|
-| Fabric         | Fullish          |
+| Fabric         | Full             |
 | Sponge         | Do it later :tm: |
 | Quilt          | Planned          |
 | Forge          | Planned          |

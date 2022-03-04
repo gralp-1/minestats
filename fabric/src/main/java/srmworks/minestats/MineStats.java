@@ -1,8 +1,10 @@
 package srmworks.minestats;
 
+import com.mojang.serialization.Decoder;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -11,23 +13,55 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import srmworks.minestats.SimpleConfig;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Base64;
 import java.util.Collection;
+import java.util.Scanner;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.Command;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+
 // TODO: Make this configurable.
 // TODO: Make it configurable on a per-player basis.
+// TODO: Keep code clean ❌
 // Fix armour array. ✅
 // Round coordinates. ✅
+
 
 public class MineStats implements ModInitializer {
 
 	public static final Logger LOGGER = LogManager.getLogger("minestats");
+	public SimpleConfig config = SimpleConfig.of("minestats").provider(this::provider).request();
+	public final Boolean Hunger      = config.getOrDefault("Hunger",      true);
+	public final Boolean Armour      = config.getOrDefault("Armour",      true);
+	public final Boolean Health      = config.getOrDefault("Health",      true);
+	public final Boolean Dimension   = config.getOrDefault("Dimension",   true);
+	public final Boolean Saturation  = config.getOrDefault("Saturation",  true);
+	public final Boolean Experience  = config.getOrDefault("Experience",  true);
+	public final Boolean Coordinates = config.getOrDefault("Coordinates",false);
+
+	private String provider(String filename) {
+		return """
+			#Minstats Config
+
+			Health=true
+			Hunger=true
+			Saturation=true
+			Experience=true
+			Dimension=true
+			Armour=true
+			Coordinates=false
+			""";
+	}
 	@Override
 	public void onInitialize() {
 
@@ -39,11 +73,9 @@ public class MineStats implements ModInitializer {
 					}));
 		});
 	}
+
+
 	public Text encodedURL(MinecraftServer server) {
-		// Exception cases
-		// if (server.isSingleplayer()) {
-		// 	return Text.of("This command is not available in singleplayer.");
-		// }
 		if (server.getPlayerManager().getPlayerList().isEmpty()) {
 			return Text.of("No players online.");
 		}
@@ -61,7 +93,8 @@ public class MineStats implements ModInitializer {
 			.styled(style -> linkText);
 	}
 
-	public static JsonObject playerJson(Collection<ServerPlayerEntity> players) {
+
+	public JsonObject playerJson(Collection<ServerPlayerEntity> players) {
 		JsonObject finalJson = new JsonObject();
 		JsonArray allPlayers = new JsonArray();
 		// Doing it this way because I'm too lazy to change the whole thing
@@ -70,7 +103,7 @@ public class MineStats implements ModInitializer {
 
 			JsonArray armourItems = new JsonArray();
 			// Iterate through the armour slots - the long and unreadable way
-			player.getInventory().armor.stream().forEach((item) -> {armourItems.add(item.getTranslationKey());});
+			player.getInventory().armor.stream().forEach((item) -> armourItems.add(item.getTranslationKey()));
 
 			JsonObject playerJson = new JsonObject();
 			JsonArray xyz = new JsonArray();
@@ -79,16 +112,23 @@ public class MineStats implements ModInitializer {
 			xyz.add(Math.floor(player.getZ()));
 
 			// Add all the applicable stats to the player's json object.
-			
-			playerJson.addProperty("name",       player.getName().asString());
-			playerJson.addProperty("uuid",       player.getUuidAsString());
-			playerJson.addProperty("world",      player.world.getRegistryKey().getValue().toString());
-			playerJson.addProperty("health",     player.getHealth());
-			playerJson.addProperty("food",       player.getHungerManager().getFoodLevel());
-			playerJson.addProperty("xp",         player.totalExperience);
-			playerJson.addProperty("saturation", player.getHungerManager().getSaturationLevel());
-			playerJson.add("coordinates",        xyz);
-			playerJson.add("armour",             armourItems);
+
+			playerJson.addProperty("name",           player.getName().asString());
+			playerJson.addProperty("uuid",           player.getUuidAsString());
+			if (Dimension)
+				playerJson.addProperty("world",      player.world.getRegistryKey().getValue().toString());
+			if (Health)
+				playerJson.addProperty("health",     player.getHealth());
+			if (Hunger)
+				playerJson.addProperty("food",       player.getHungerManager().getFoodLevel());
+			if (Experience)
+				playerJson.addProperty("xp",         player.totalExperience);
+			if (Saturation)
+				playerJson.addProperty("saturation", player.getHungerManager().getSaturationLevel());
+			if (Coordinates)
+				playerJson.add("coordinates",        xyz);
+			if (Armour)
+				playerJson.add("armour",             armourItems);
 
 			allPlayers.add(playerJson);
 			

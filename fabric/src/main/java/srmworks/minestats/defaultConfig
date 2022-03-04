@@ -1,0 +1,9 @@
+#Minstats Config
+
+Health=true
+Hunger=true
+Saturation=true
+Experience=true
+Dimension=true
+Armour=true
+Coordinates=false
