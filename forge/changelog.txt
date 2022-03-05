@@ -1,6 +1,41 @@
 1.18.x Changelog
+40.0
+====
+ - 40.0.4 Fixed swim speed attribute (#8499)
+ - 40.0.3 Fix incorrect movement distance calculation (#8497)
+ - 40.0.2 Add support to Forge registry wrappers for new Holder system. Closes #8491
+          Fix TagBasedToolTypesTest not generating needed data correctly.
+ - 40.0.1 Fix JNA not working at runtime and causing issues with natives.
+ - 40.0.0 Update to 1.18.2
+          Co-authored-by: sciwhiz12 <arnoldnunag12@gmail.com>
+          Co-authored-by: Marc Hermans <marc.hermans@ldtteam.com>
+          Co-authored-by: LexManos <LexManos@gmail.com>
+          Co-authored-by: Curle <curle@gemwire.uk>
+
+39.1
+====
+ - 39.1.2 1.18.x Omnibus (#8239)
+ - 39.1.1 Bump modlauncher and securejarhandler version (#8489)
+ - 39.1.0 Update license headers to compact SPDX format.
+          License has not changed, this is just more compact and doesn't include years.
+          Bump version for RB.
+
 39.0
 ====
+ - 39.0.91 Remove - from allowed characters in mod ids.
+           The Java Module System does not allow them in module ids.
+           Closes #8488
+ - 39.0.90 Fix static initializer crash when loading BakedRenderable.
+ - 39.0.89 Fix regressions for onAddedTo/RemovedFromWorld and related events (#8434)
+ - 39.0.88 [1.18] Integrate the gametest framework with Forge (#8225)
+ - 39.0.87 Re-add missing Shulker patch for EntityTeleportEvent (#8481)
+ - 39.0.86 Fix entity type in conversion event to Drowned (#8479)
+ - 39.0.85 Add VanillaGameEvent to allow for globally listening to vanilla's GameEvents (#8472)
+ - 39.0.84 Provide damage source context to Item#onDestroyed(ItemEntity) (#8473)
+ - 39.0.83 Add missing shear and elytra game events (#8471)
+ - 39.0.82 Fix comment for permission handler config setting  (#8466)
+ - 39.0.81 Apply nullable annotations to LootingLevelEvent (#8422)
+ - 39.0.80 Fix Mob Spawner logic with CustomSpawnRules. Closes #8398
  - 39.0.79 Fix LivingDropsEvent not having all drops for foxes (#8387)
  - 39.0.78 Add missing Locale parameter to String.format calls, Fixes getArmorResource functionality on some locaales. (#8463)
  - 39.0.77 Allow items to hide parts of their tooltips by default (#8358)

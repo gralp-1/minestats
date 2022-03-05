@@ -1,14 +1,15 @@
 ## Platform support
 
-| Platform       | Support          |
-|----------------|------------------|
-| Fabric         | Full             |
-| Sponge         | Do it later :tm: |
-| Quilt          | Planned          |
-| Forge          | Planned          |
-| Velocity       | Planned          |
-| Spigot         | Do it later :tm: |
-| Bukkit         | Do it later :tm: |
+| Platform       | Support      |
+|----------------|--------------|
+| Fabric         | Full         |
+| Forge          | Coming Later |
+| Quilt          | Coming Later |
+| Spigot         | Coming Later |
+| Sponge         | Coming Later |
+| Paper          | Coming Later |
+| Velocity       | Coming Later |
+| Bukkit         | Coming Later |
 
 
 ## Features

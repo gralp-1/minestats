@@ -47,7 +47,7 @@ public class MineStats implements ModInitializer {
 	public final Boolean Dimension   = config.getOrDefault("Dimension",   true);
 	public final Boolean Saturation  = config.getOrDefault("Saturation",  true);
 	public final Boolean Experience  = config.getOrDefault("Experience",  true);
-	public final Boolean Coordinates = config.getOrDefault("Coordinates",false);
+	public final Boolean Coordinates = config.getOrDefault("Coordinates", false);
 
 	private String provider(String filename) {
 		return """
