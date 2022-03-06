@@ -30,7 +30,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-// TODO: Make this configurable.
+// TODO(#5): Make this configurable.
 // TODO: Make it configurable on a per-player basis.
 // TODO: Keep code clean ❌
 // Fix armour array. ✅
