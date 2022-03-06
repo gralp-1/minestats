@@ -3,7 +3,7 @@
 | Platform       | Support      |
 |----------------|--------------|
 | Fabric         | Full         |
-| Forge          | W.I.P        |
+| Forge          | Full         |
 | Quilt          | Coming Later |
 | Spigot         | Coming Later |
 | Sponge         | Coming Later |
