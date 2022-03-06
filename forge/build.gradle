@@ -18,8 +18,6 @@ apply plugin: 'net.minecraftforge.gradle'
 
 version = '1.0'
 group = 'com.srmworks.minestats' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'minestats'
-
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -61,10 +59,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'minestats'
 
             mods {
-                examplemod {
+                minestats {
                     source sourceSets.main
                 }
             }
@@ -78,10 +76,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'minestats'
 
             mods {
-                examplemod {
+                minestats {
                     source sourceSets.main
                 }
             }
@@ -106,10 +104,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'minestats'
 
             mods {
-                examplemod {
+                minestats {
                     source sourceSets.main
                 }
             }
@@ -123,7 +121,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'minestats', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 examplemod {
