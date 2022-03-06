@@ -31,7 +31,7 @@ import org.apache.logging.log4j.Logger;
 
 
 // TODO(#3): Make this configurable.
-// TODO: Make it configurable on a per-player basis.
+// TODO(#4): Make it configurable on a per-player basis.
 // TODO: Keep code clean ❌
 // Fix armour array. ✅
 // Round coordinates. ✅
